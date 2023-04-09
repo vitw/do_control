@@ -3,16 +3,8 @@
 
 
 void SSMode::stateMachine(){
-	// ChannelStatus current_status = DO_OFF; 
  	switch (m_state){
 		case SSState::SS_IDLE:
-            // softStartSolver(channel, signals);
-			// current_status = channel->output_state? DO_ON: DO_OFF;
-			// if (channel->channel_context.state.ss_state == PHASE_1){
-            //     m_triac_signal = 1;
-            //     m_relay_signal = 0;
-			// 	current_status = DO_SOFT_START;
-			// }
 			m_triac_signal = outputSignal::SIGNAL_OFF;
 			if (m_real_output_state == outputState::STATE_ON){
 				m_relay_signal = outputSignal::SIGNAL_ON;

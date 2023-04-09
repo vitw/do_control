@@ -12,12 +12,12 @@ static void print_info(DOChannel& channel1){
 }
 
 int main(){
-    uint16_t di_period = 10;
+    uint16_t tick_period = 10;
     uint8_t output1_num = 1;
-    RTMode output1_mode{di_period};
-    SSMode output2_mode{di_period};
+    RTMode relay_triac_mode{tick_period};
+    SSMode soft_start_mode{tick_period};
 
-    DOChannel channel1{output1_num, &output1_mode};
+    DOChannel channel1{output1_num, &relay_triac_mode};
     channel1.setChannelOutputState(ChannelMode::outputState::STATE_ON);
 
     for (int i = 0; i < 15; i++){
@@ -25,7 +25,7 @@ int main(){
         print_info(channel1);
     }
 
-    channel1.setChannelMode(&output2_mode);
+    channel1.setChannelMode(&soft_start_mode);
     channel1.setChannelOutputState(ChannelMode::outputState::STATE_ON);
 
     for (int i = 0; i < 400; i++){
